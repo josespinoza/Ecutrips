@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ECUTRIP</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+	<script src="js/parse.js">					</script>
+	<script src="js/map.js">					</script>
+	<script src="js/jquery.js">					</script>
+	<script src="js/main.js" >					</script>
+	<script src="js/jquery.uploadify.js">		</script>
+	<script src="js/jquery.fancybox.js?v=2.1.3"></script>
+
+	<script>$(document).ready(function(){ app.initialize(); });</script>
+
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="css/uploadify.css">
+	<link rel="stylesheet" type="text/css" href="css/fancybox.css?v=2.1.2"/>
+</head>
+<body>
+	<header>
+		<h1>Ecutrips</h1>
+		<nav>
+			<a href="#" id="toursBtn" class="button">TOURS</a>
+			<a href="#" id="poisBtn"  class="button">POIS</a>
+		</nav>
+	</header>
+
+	<section id="container">
+		<div id="mapCanvas">&nbsp;</div>
+
+
+
+		<!--********************* S I D E B A R S ***************************-->
+		<div id="filterList" class="sidebar">
+			<div class="acciones">
+				<a href="#" id="getPOIS"   class="button dark">Actualizar POIS </a>
+				<a href="#" id="createPOI" class="button dark">Nuevo POI 	   </a>
+			</div>
+			<hr/>
+			<nav>
+				<a href="#" rel="0" >Mostrar Todos 							</a>
+				<a href="#" rel="1" >Artesan&iacute;as 						</a>
+				<a href="#" rel="2" >Bancos 								</a>
+				<a href="#" rel="3" >Bares 									</a>
+				<a href="#" rel="4" >Cafeter&iacute;as 						</a>
+				<a href="#" rel="5" >Centros Comerciales 					</a>
+				<a href="#" rel="6" >Centros de Salud / Hospitales			</a>
+				<a href="#" rel="7" >Cines  								</a>
+				<a href="#" rel="8" >Circos 								</a>
+				<a href="#" rel="9" >Conciertos 							</a>
+				<a href="#" rel="10">Discotecas 							</a>
+				<a href="#" rel="11">Estaciones de Servicio (gasolineras)	</a>
+				<a href="#" rel="12">Estadios 								</a>
+				<a href="#" rel="13">Hoteles 								</a>
+				<a href="#" rel="14">Iglesias 								</a>
+				<a href="#" rel="15">Museos									</a>
+				<a href="#" rel="16">Parques 								</a>
+				<a href="#" rel="17">Puntos Tur&iacute;sticos 				</a>
+				<a href="#" rel="18">Restaurantes 							</a>
+				<a href="#" rel="19">Spas 									</a>
+				<a href="#" rel="20">Teatros 								</a>
+				<a href="#" rel="21">Zool&oacute;gicos 						</a>
+			</nav>
+		</div>
+
+
+		<div id="tourList" class="sidebar">
+			<div id="nearTours">
+				<div class="acciones">
+					<a href="#" id="getTOURS"   class="button dark">Actualizar TOURS</a>
+					<a href="#" id="createTOUR" class="button dark">Nuevo TOUR  	</a>
+				</div>
+				<hr/>
+			</div>
+			<div id="tourPoiList">
+				<div class="acciones">
+					<a href="#" id="finishTour"   class="button dark">Terminar Tour</a>
+					<a href="#" id="createTourPOI" class="button dark">Nuevo POI 	   </a>
+				</div>
+				<hr/>
+				<ul>
+				</ul>
+			</div>
+		</div>
+
+
+
+
+		<!--************************* M O D A L S ******************************-->
+		<div id="newPOI">
+			<form>
+				<fieldset>
+					<legend>Nuevo POI</legend>
+					<label>Nombre</label>
+					<input type="text" name="nombre" id="nombre">
+					<br/>
+					<label>Categoria:</label>
+					<select name="categoria" id="categoria">
+						<option value="1" >Artesan&iacute;as 					</option>
+						<option value="2" >Bancos 								</option>
+						<option value="3" >Bares 								</option>
+						<option value="4" >Cafeter&iacute;as 					</option>
+						<option value="5" >Centros Comerciales 					</option>
+						<option value="6" >Centros de Salud / Hospitales		</option>
+						<option value="7" >Cines  								</option>
+						<option value="8" >Circos 								</option>
+						<option value="9" >Conciertos 							</option>
+						<option value="10">Discotecas 							</option>
+						<option value="11">Estaciones de Servicio (gasolineras)	</option>
+						<option value="12">Estadios 							</option>
+						<option value="13">Hoteles 								</option>
+						<option value="14">Iglesias 							</option>
+						<option value="15">Museos								</option>
+						<option value="16">Parques 								</option>
+						<option value="17">Puntos Tur&iacute;sticos 			</option>
+						<option value="18">Restaurantes 						</option>
+						<option value="19">Spas 								</option>
+						<option value="20">Teatros 								</option>
+						<option value="21">Zool&oacute;gicos 					</option>
+					</select>
+					<br/>
+					<label>Calificacion:</label>
+					<input type="radio" name="calificacion" id="calificacion" value="1" class="pequeno">
+					<input type="radio" name="calificacion" id="calificacion" value="2" class="pequeno">
+					<input type="radio" name="calificacion" id="calificacion" value="3" class="pequeno">
+					<input type="radio" name="calificacion" id="calificacion" value="4" class="pequeno">
+					<input type="radio" name="calificacion" id="calificacion" value="5" class="pequeno">
+					</select>
+					<br/>
+					<label>Descripcion</label>
+					<input type="text" name="descripcion" id="descripcion">
+					<br/>
+					<label>Direccion</label>
+					<input type="text" name="direccion" id="direccion">
+					<br/>
+					<label>Imagenes</label>
+					<div id="queue_image"></div>
+					<input id="image_upload" name="image_upload" type="file" multiple="true">
+					<br/>
+					<label>Audio</label>
+					<div id="queue_audio"></div>
+					<input id="audio_upload" name="audio_upload" type="file" multiple="false">
+					<br/>
+					<label>Localizacion</label>
+					<input type="text" name="lat" id="lat" class="mediano">
+					<input type="text" name="lng" id="lng" class="mediano">
+					<br/>
+					<label>Promociones</label>
+					<input type="text" name="promociones" id="promociones">
+					<br/>
+					<label>Certificado:</label>
+					<input type="checkbox" name="certificado" id="certificado" value="1" class="pequeno">
+				</fieldset>
+
+					<input type="submit" value="grabar" class="button">
+			</form>
+		</div>
+
+		<div id="showPOI" class="modal">
+
+		</div>
+
+
+
+
+		<div id="newTour">
+			<form>
+				<fieldset>
+					<legend>Nuevo TOUR</legend>
+					<label>Nombre</label>
+					<input type="text" name="nombreTour" id="nombreTour">
+					<br/>
+					<label>Calificacion:</label>
+					<input type="radio" name="calificacionTour" id="calificacionTour" value="1" class="pequeno">
+					<input type="radio" name="calificacionTour" id="calificacionTour" value="2" class="pequeno">
+					<input type="radio" name="calificacionTour" id="calificacionTour" value="3" class="pequeno">
+					<input type="radio" name="calificacionTour" id="calificacionTour" value="4" class="pequeno">
+					<input type="radio" name="calificacionTour" id="calificacionTour" value="5" class="pequeno">
+					</select>
+					<br/>
+					<label>Descripcion</label>
+					<input type="text" name="descripcionTour" id="descripcionTour">
+					<br/>
+					<label>Direccion</label>
+					<input type="text" name="direccionTour" id="direccionTour">
+					<br/>
+					<label>Promociones</label>
+					<input type="text" name="promocionTour" id="promocionTour">
+					<br/>
+				</fieldset>
+
+					<input type="submit" value="grabar" class="button">
+			</form>
+		</div>
+
+	</section>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkQn7xaNDvejYT7o3c1qJHHYuyUoar1eU&sensor=true&callback=app.initMap"></script>
+</body>
+</html>

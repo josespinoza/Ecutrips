@@ -1,0 +1,312 @@
+body, html
+{
+	background: #e0e0e0;
+	margin: 0;
+	font: 12px/18px "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+	color: #333;
+	height: 100%;
+}
+
+header
+{
+	height: 5%;
+	min-height: 40px;
+	background: #ddd;
+	display: table;
+	width: 100%;
+	box-shadow: 0 -40px 14px -14px #bbb inset;
+	border-bottom: 1px solid #666;
+	border-top: 1px solid #eee;
+}
+	header nav
+	{
+		display: table-cell;
+		vertical-align: middle;
+		width: 80%;
+		height: 100%;
+		text-align: right;
+		font-size: 0;
+	}
+	header nav a
+	{
+		font: 12px/18px "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+		display: inline-block;
+		margin: 0;
+		padding: 0 20px;
+		text-decoration: none;
+	}
+
+	header h1
+	{
+		display: table-cell;
+		vertical-align: middle;
+		width: 20%;
+	}
+
+#mapCanvas
+{
+	background: #e5e3df;
+	width: 100%;
+	height: 100%;
+	border-top: 1px solid #eee;
+	transition: 0.4s all;
+	-webkit-transition: 0.4s all;
+	-o-transition: 0.4s all;
+}
+
+#mapCanvas>div
+{
+	position: static !important;
+}
+
+div.modal
+{
+	display: none;
+	width: 500px;
+}
+
+label
+{ 
+	width: 130px; 
+	display: inline-block; 
+	text-align: right; 
+	margin: 5px;
+}
+
+input, select{ width: 300px; display: inline-block;}
+form
+{ 
+	width: 490px;
+	text-align: right;
+	margin: auto;
+}
+fieldset
+{
+	border: 0;
+	text-align: left;
+	margin:0;
+	padding: 0;
+	width: 99%;
+}
+
+legend{
+	font-size: 130%;
+	margin: 20px 0;
+	width: 100%;
+	text-align: center;
+}
+
+input.mediano{ width: 150px; }
+input.pequeno{ width:  30px; }
+
+.button
+{
+	background: #1b52e2;
+	color: #DDD;
+	border: 1px solid #0c2465;
+	border-radius: 4px;
+	width: auto;
+	padding: 4px 15px;
+	box-shadow: 0 2px 3px #666, 0 11px 4px #2b81ea inset, 0 -1px 1px #2b81ea inset;
+	text-shadow: -1px -1px 1px #333;
+	text-decoration: none;
+	margin: 10px;
+	transition: 0.2s all;
+	-webkit-transition: 0.2s all;
+	-o-transition: 0.2s all;
+}
+
+.button:hover
+{
+	color: #FFF;
+	background: #2266e5;
+	box-shadow: 0 2px 5px #666, 0 11px 4px #2694ee inset, 0 -1px 1px #589cef inset;
+}
+
+.button:active
+{
+	color: #aaa;
+	background: #2266e5;
+	box-shadow: 0 -1px 1px #aaa, 0 11px 4px #236ee6 inset, 0 -1px 4px #1a4fd9 inset;
+}
+
+.button.dark
+{
+	background: #393939;
+	border: 1px solid #000;
+	box-shadow: 0 2px 3px #111, 0 11px 4px #666 inset, 0 -1px 1px #666 inset;
+	text-shadow: -1px -1px 1px #000;
+}
+
+.button.dark:hover
+{
+	color: #FFF;
+	background: #444;
+	box-shadow: 0 2px 5px #111, 0 11px 4px #777 inset, 0 -1px 1px #777 inset;
+}
+
+
+.button.dark:active
+{
+	color: #aaa;
+	background: #444;
+	box-shadow: 0 1px 1px #555, 0 11px 4px #333 inset, 0 -1px 4px #333 inset;
+}
+
+#container
+{
+	display: block;
+	height: 94%;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+
+.sidebar
+{
+	width: 300px;
+	background: #333;
+	height: 100%;
+	display: inline-block;
+	position: absolute;
+	overflow: auto;
+	top: 0;
+	right: 0;
+	margin-right: -300px;
+	transition: 0.4s all;
+	-webkit-transition: 0.4s all;
+	-o-transition: 0.4s all;
+
+	box-shadow: 5px 0px 5px #111 inset;
+	color: #ddd;
+}
+
+#container.showTours #filterList,
+#container.showTours #mapOptions, 
+#container.showTours #eventList, 
+#container.showEvents #filterList,
+#container.showEvents #mapOptions, 
+#container.showEvents #tourList, 
+#container.showMapOpt #filterList,
+#container.showMapOpt #eventList,
+#container.showMapOpt #tourList, 
+#container.showPois #tourList,
+#container.showPois #eventList,
+#container.showPois #mapOptions
+{
+	right: +300px;
+	position: relative;
+}
+#container.showTours #tourList,
+#container.showEvents #eventList,
+#container.showMapOpt #mapOptions, 
+#container.showPois #filterList
+{
+	margin-right: 0;
+}
+
+#container.showPois #mapCanvas,
+#container.showMapOpt #mapCanvas,
+#container.showEvents #mapCanvas,
+#container.showTours #mapCanvas
+{
+	/*right: +300px;*/
+	position: relative;
+}
+
+	.sidebar nav a
+	{
+		color: #fff;
+		text-decoration: none;
+		display: block;
+		padding: 7px 30px;
+		text-shadow: 1px 1px 1px #000;
+	}
+
+	.sidebar nav a:hover
+	{
+		background: #555;
+		box-shadow: 8px 0px 8px -5px #111 inset;
+	}
+
+	.sidebar nav div a
+	{
+		width: 60%;
+		display: inline-block;
+	}
+	.sidebar nav div a.delete
+	{
+		width: 20%;
+		margin: 0 3%;
+		display: inline-block;
+		border-radius: 50px;
+		width: 20px;
+		text-align: center;
+		padding: 0;
+	}
+
+
+	.sidebar nav div a.delete:hover
+	{
+		background: #F00;
+		box-shadow: 0;
+	}
+
+	.sidebar nav div:hover
+	{
+		background: #555;
+		box-shadow: 8px 0px 8px -5px #111 inset;
+	}
+
+.sidebar .acciones
+{
+	display: block;
+	margin: 30px 10px;
+}
+.sidebar hr
+{
+	border: 0;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #000;
+}
+
+
+#eventPoiList,
+#tourPoiList
+{
+	display: none;
+}
+#eventList.poilist #eventPoiList,
+#tourList.poilist #tourPoiList
+{
+	display: block;
+}
+#eventList.poilist #nearEvents,
+#tourList.poilist #nearTours
+{
+	display: none;
+}
+
+
+#queue_image, #queue_audio
+{
+	display: none;
+}
+.uploadify
+{
+	display: inline-block;
+}
+
+
+#mapOptions div.acciones input
+{
+	width: 50%;
+	display: inline-block;
+}
+#mapOptions div.acciones label
+{
+	width: 23%;
+	color: #FFF;
+	text-align: left;
+}
